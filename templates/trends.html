@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% block title %}Trends{% endblock %}
+{% block content %}
+
+<style>
+  /* --- Industrial dark mode background --- */
+  body {
+    background: linear-gradient(145deg, #0d1117, #1a1a1a);
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Page titles */
+  h2 {
+    text-align: center;
+    color: #090b0b;
+    margin-top: 30px;
+    text-shadow: 0 0 8px #00ffd5, 0 0 15px #00a3a3;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* Chart container with industrial style */
+  .chart-container {
+    width: 50%;
+    height: 550px;
+    margin: 25px auto;
+    background: rgba(25, 25, 25, 0.9);
+    border: 1px solid #00ffd5;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    padding: 20px;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.8s ease-in;
+  }
+
+  /* Buttons row */
+  .btn-row {
+    text-align: center;
+    margin: 10px 0 40px 0;
+  }
+
+  .btn-row button {
+    background: linear-gradient(135deg, #1a1a1a, #333333);
+    color: #00ffd5;
+    border: 1px solid #00ffd5;
+    border-radius: 6px;
+    padding: 9px 22px;
+    margin: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 255, 213, 0.4);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn-row button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 20px #00ffd5, 0 0 30px rgba(0, 255, 213, 0.2) inset;
+    background: linear-gradient(135deg, #00ffd5, #00a3a3);
+    color: #111;
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Add subtle grid lines for industrial chart feel */
+  canvas {
+    background: rgba(10, 10, 10, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .Two-chart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<div class="Two-chart">
+  <div class="chart-container">
+    <h2>Temperature Trend</h2>
+    <div class="btn-row">
+      <button onclick="loadHistorical('temperature','1min')">1 Min</button>
+      <button onclick="loadHistorical('temperature','1h')">1 Hour</button>
+      <button onclick="loadHistorical('temperature','all')">All</button>
+    </div>
+    <canvas id="tempChart"></canvas>
+  </div>
+
+
+  <div class="chart-container">
+    <h2>Pressure Trend</h2>
+     <div class="btn-row">
+    <button onclick="loadHistorical('pressure','1min')">1 Min</button>
+    <button onclick="loadHistorical('pressure','1h')">1 Hour</button>
+    <button onclick="loadHistorical('pressure','all')">All</button>
+  </div>
+    <canvas id="pressureChart"></canvas>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  let tempChart, pressureChart;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initCharts();
+    loadHistorical("temperature", "1h");
+    loadHistorical("pressure", "1h");
+  });
+
+  function initCharts() {
+    const ctxTemp = document.getElementById("tempChart").getContext("2d");
+    const ctxPressure = document.getElementById("pressureChart").getContext("2d");
+
+    const commonOptions = {
+      responsive: true,
+      plugins: {
+        legend: { labels: { color: "#00ffd5", font: { weight: 'bold' } } },
+      },
+      scales: {
+        x: {
+          ticks: { color: "#00ffd5" },
+          grid: { color: "rgba(0,255,213,0.1)", borderColor: "#00ffd5" },
+          title: { display: true, color: "#00ffd5" }
+        },
+        y: {
+          ticks: { color: "#00ffd5" },
+          grid: { color: "rgba(0,255,213,0.1)", borderColor: "#00ffd5" },
+          title: { display: true, color: "#00ffd5" }
+        }
+      }
+    };
+
+    tempChart = new Chart(ctxTemp, {
+      type: "line",
+      data: {
+        labels: [], datasets: [{
+          label: "Temperature (°C)",
+          data: [],
+          borderColor: "#00ffd5",
+          backgroundColor: "rgba(0,255,213,0.15)",
+          fill: true,
+          tension: 0.3,
+          pointRadius: 3,
+          pointHoverRadius: 6,
+          pointBackgroundColor: "#00ffd5",
+          pointBorderColor: "#111"
+        }]
+      },
+      options: commonOptions
+    });
+
+    pressureChart = new Chart(ctxPressure, {
+      type: "line",
+      data: {
+        labels: [], datasets: [{
+          label: "Pressure (bar)",
+          data: [],
+          borderColor: "#ffcc00",
+          backgroundColor: "rgba(255,204,0,0.15)",
+          fill: true,
+          tension: 0.3,
+          pointRadius: 3,
+          pointHoverRadius: 6,
+          pointBackgroundColor: "#ffcc00",
+          pointBorderColor: "#111"
+        }]
+      },
+      options: commonOptions
+    });
+  }
+
+  function loadHistorical(type, duration) {
+    fetch(`/historian?duration=${duration}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data || data.length === 0) return;
+        const labels = data.map(d => d.timestamp);
+        const tempData = data.map(d => d.temperature);
+        const pressureData = data.map(d => d.pressure);
+        if (type === "temperature") {
+          tempChart.data.labels = labels;
+          tempChart.data.datasets[0].data = tempData;
+          tempChart.update();
+        } else if (type === "pressure") {
+          pressureChart.data.labels = labels;
+          pressureChart.data.datasets[0].data = pressureData;
+          pressureChart.update();
+        }
+      });
+  }
+</script>
+
+{% endblock %}

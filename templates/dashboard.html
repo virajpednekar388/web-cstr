@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<style>
+    header .indicatorr {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 12px;
+    background: green;
+    box-shadow: 0 0 15px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    animation: blinke 1.5s infinite;
+}
+
+
+@keyframes blinke {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.2; }
+}
+
+</style>
+<div class="dashboard">
+    <!-- main layout of cstr -->
+    <div class="main-layout">
+
+        <!-- CSTR layout -->
+        <div class="cstr-layout">
+
+            <header>
+                <h1>BATCH PROCESS CONTROL IN CSTR</h1>
+                 <div>
+                <span class="indicatorr red"></span>
+            </div>
+            </header>
+            <!-- <hr> -->
+            <main class="layout">
+                <!-- Left side -->
+                <!-- <div class="left-panel">
+                    <button class="btn green">BATCH START</button>
+                    <button class="btn green">BATCH STOP</button>
+                </div> -->
+
+                <!-- Center process diagram -->
+                <div class="process">
+                    <div class="section-1"> <!--IN section 1 hot water,pump and cv code are there-->
+                        <div class="pipe-1"></div>
+                        <div class="pipe-2"></div>
+                        <div class="pipe-3"></div>
+                        <div class="pipe-4"></div>
+                        <div class="pipe-5"></div>
+
+                        <!-- heater & pump code -->
+                        <div class="pump-cv-1">
+                            <div class="CV-Valve-1">
+                                <h1 id="CV-ON-OFF-1">CV-1</h1>
+                                <div class="valve-CV-1">
+                                    <img src="{{ url_for('static', filename='control-valve.png') }}" alt="Valve">
+                                </div>
+                            </div>
+                            <div class="pump">
+                                <div class="pump-img">
+                                    <img id="pumpStatus" src="{{ url_for('static', filename='centrifugal-pump.png') }}"
+                                        alt="Pump">
+                                    <div id="middle-arrow"></div>
+                                    <div class="pump-display">
+                                        <div>
+                                            <h1 id="heater-pump">pump 1</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="float-switch"></div>
+                            <div class="heater">
+                                <h1 id="heater_water" style="color:black">Heater</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- reactor and stirrer code should be in one container -->
+
+                    <!--IN section 2 reator code ie return-->
+                    <div class="section-1">
+
+                        <!-- pipe code start here  -->
+
+                        <div class="pipe-6"></div>
+                        <!-- <div class="pipe-7"></div> -->
+                        <div class="pipe-8"></div>
+                        <div class="pipe-9"></div>
+                        <div class="pipe-10"></div>
+                        <div class="pipe-11"></div>
+                        <div class="pipe-12"></div>
+                        <div class="pipe-13"></div>
+                        <div class="pipe-14"></div>
+                        <!-- stirrer code -->
+                        <div class="stirrer">
+                            <div class="stirrer-motor">
+                                <h3>Motor</h3>
+                                <!-- <h1 id="motor-condition">OFF</h1> -->
+                            </div>
+                            <div class="stirrer-rod"></div>
+                        </div>
+
+                        <!-- In this section we have written the code of pressure Display  -->
+                        <div class="pressure-box">
+                            <span id="pressure-display">
+                                <span>Pressure</span>
+                                <!-- PT value -->
+                                <span id="pressure-value">--</span>
+                            </span>
+
+                            <!-- pressure transmitter image -->
+                            <span id="pressure-img"><img id="PT-Sensor"
+                                    src="{{ url_for('static', filename='pressure-transmitter.png') }}" alt="PT"></span>
+                        </div>
+                        <!-- valve code -->
+                        <div class="reactor">
+                            <div class="reactor-img">
+                                <img src="{{ url_for('static', filename='tank-111.png') }}" alt="Tank">
+                            </div>
+                            <div class="tank-outside">
+                                <div class="reactor_bar" id="reactor_value">
+                                </div>
+                                <div class="scale-number">
+                                    <div class="scale">-100%</div>
+                                    <div class="scale">-75%</div>
+                                    <div class="scale">-50%</div>
+                                    <div class="scale">-25%</div>
+                                    <div class="scale">-0%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ----------in this section we have to display the actual value of the Temperature ------------>
+                        <div class="Temp-display">
+                            <div class="RTD-img">
+                                <img src="{{ url_for('static', filename='TT.png') }}" alt="RTD">
+                            </div>
+
+                            <div class="Temp-box">
+                                <span>Temparature</span>
+                                <span id="Temp-Value">--</span>
+                            </div>
+                        </div>
+
+                        <!------- temp code End -------------->
+
+
+                        <div class="CV-Valve-2">
+                            <h1 id="CV-ON-OFF-2">CV-2</h1>
+                            <div class="valve-CV-2">
+                                <img src="{{ url_for('static', filename='control-valve.png') }}" alt="Valve">
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- reator code -->
+
+                    <!--IN section 3 pump and product tank code is written-->
+                    <div class="section-1">
+
+                        <div class="pipe-15"></div>
+                        <div class="pipe-16"></div>
+                        <div class="pipe-17"></div>
+                        <div class="pipe-18"></div>
+                        <!-- reactor and stirrer code should be in one container finnish -->
+
+                        <!-- pump A and b should be with tank produc  -->
+                        <!-- pump a and b -->
+                        <div class="All-pumps">
+                            <div id="pump-A">
+
+                                <img id="pumpStatus-1" src="{{ url_for('static', filename='centrifugal-pump.png') }}"
+                                    alt="pump">
+                                <div id="middle-arrow"></div>
+                                <span id="reactant-pump-A">
+                                    <h1>pump 2</h1>
+                                </span>
+                            </div>
+                            <div id="pump-B">
+                                <img id="pumpStatus-2" src="{{ url_for('static', filename='centrifugal-pump.png') }}"
+                                    alt="pump">
+                                <div id="middle-arrow"></div>
+                                <span id="reactant-pump-B">
+                                    <h1>pump 3</h1>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- tank product -->
+                        <div class="tank-product">
+                            <div id="product">
+                                <h1 id="product-text" style="font-size: small; text-align:center">Product Tank</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- pump A and b should be with tank produc  -->
+
+                    <!--IN section 4 tank one and tank two code is return-->
+                    <div class="section-1">
+
+                        <div class="pipe-19"></div>
+                        <div class="pipe-20"></div>
+                        <!-- reactant code a and b  -->
+                        <div class="tank-reactant">
+                            <div id="Reactant-tank-A">
+                                <div class="line-box" style="color:black">
+                                    <h1>Tank A</h1>
+                                </div>
+                            </div>
+                            <hr>
+                            <div id="Reactant-tank-B" style="color:black">
+                                <div class="line-box">
+                                    <h1>Tank B</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- main/middle side complete -->
+
+            </main>
+
+        </div>
+
+    </div>
+    <!--  -->
+
+
+</div>
+
+</div>
+
+
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
