@@ -4,22 +4,30 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 <style>
     header .indicatorr {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 12px;
-    background: green;
-    box-shadow: 0 0 15px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
-    animation: blinke 1.5s infinite;
-}
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 12px;
+        background: green;
+        box-shadow: 0 0 15px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+        animation: blinke 1.5s infinite;
+    }
 
 
-@keyframes blinke {
-    0%, 50%, 100% { opacity: 1; }
-    25%, 75% { opacity: 0.2; }
-}
+    @keyframes blinke {
 
+        0%,
+        50%,
+        100% {
+            opacity: 1;
+        }
+
+        25%,
+        75% {
+            opacity: 0.2;
+        }
+    }
 </style>
 <div class="dashboard">
     <!-- main layout of cstr -->
@@ -30,18 +38,12 @@
 
             <header>
                 <h1>BATCH PROCESS CONTROL IN CSTR</h1>
-                 <div>
-                <span class="indicatorr red"></span>
-            </div>
+                <div>
+                    <span class="indicatorr red"></span>
+                </div>
             </header>
             <!-- <hr> -->
             <main class="layout">
-                <!-- Left side -->
-                <!-- <div class="left-panel">
-                    <button class="btn green">BATCH START</button>
-                    <button class="btn green">BATCH STOP</button>
-                </div> -->
-
                 <!-- Center process diagram -->
                 <div class="process">
                     <div class="section-1"> <!--IN section 1 hot water,pump and cv code are there-->
@@ -61,8 +63,7 @@
                             </div>
                             <div class="pump">
                                 <div class="pump-img">
-                                    <img id="pumpStatus" src="{{ url_for('static', filename='centrifugal-pump.png') }}"
-                                        alt="Pump">
+                                    <img id="pumpStatus" src="{{ url_for('static', filename='hpump.png') }}" alt="Pump">
                                     <div id="middle-arrow"></div>
                                     <div class="pump-display">
                                         <div>
@@ -73,7 +74,7 @@
                             </div>
                             <div class="float-switch"></div>
                             <div class="heater">
-                                <h1 id="heater_water" style="color:black">Heater</h1>
+                                <img id="heater-img" src="{{ url_for('static', filename='heater.png') }}" alt="heater">
                             </div>
                         </div>
                     </div>
@@ -96,11 +97,7 @@
                         <div class="pipe-14"></div>
                         <!-- stirrer code -->
                         <div class="stirrer">
-                            <div class="stirrer-motor">
-                                <h3>Motor</h3>
-                                <!-- <h1 id="motor-condition">OFF</h1> -->
-                            </div>
-                            <div class="stirrer-rod"></div>
+                            <img id="PT-Sensor" src="{{ url_for('static', filename='agitator.png') }}" alt="PT">
                         </div>
 
                         <!-- In this section we have written the code of pressure Display  -->
@@ -172,7 +169,7 @@
                         <div class="All-pumps">
                             <div id="pump-A">
 
-                                <img id="pumpStatus-1" src="{{ url_for('static', filename='centrifugal-pump.png') }}"
+                                <img id="pumpStatus-1" src="{{ url_for('static', filename='hpump2.png') }}"
                                     alt="pump">
                                 <div id="middle-arrow"></div>
                                 <span id="reactant-pump-A">
@@ -180,7 +177,7 @@
                                 </span>
                             </div>
                             <div id="pump-B">
-                                <img id="pumpStatus-2" src="{{ url_for('static', filename='centrifugal-pump.png') }}"
+                                <img id="pumpStatus-2" src="{{ url_for('static', filename='hpump2.png') }}"
                                     alt="pump">
                                 <div id="middle-arrow"></div>
                                 <span id="reactant-pump-B">
@@ -205,14 +202,12 @@
                         <!-- reactant code a and b  -->
                         <div class="tank-reactant">
                             <div id="Reactant-tank-A">
-                                <img id="tank-A" src="{{ url_for('static', filename='3dTank.png') }}"
-                                    alt="tank-A">
+                                <img id="tank-A" src="{{ url_for('static', filename='3dTank.png') }}" alt="tank-A">
                             </div>
                             <hr>
                             <div id="Reactant-tank-B">
-                                <img id="tank-B" src="{{ url_for('static', filename='3dTank.png') }}"
-                                    alt="tank-B">
-                                
+                                <img id="tank-B" src="{{ url_for('static', filename='3dTank.png') }}" alt="tank-B">
+
                             </div>
                         </div>
                     </div>

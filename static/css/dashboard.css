@@ -105,28 +105,34 @@
 /* ---------section 1, pipe section start here-----------  */
 
 .pipe-1 {
-    height: 93px;
-    width: 2px;
-    margin-top: 132px;
-    margin-right: 119px;
+    height: 71px;
+    width: 10px;
+    margin-top: 8px;
+    margin-right: 390px;
     color: black;
     text-align: center;
     position: absolute;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 15px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    border: 1px groove #d4d4dd;
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 
 .pipe-2 {
-    height: 45px;
-    width: 2px;
-    margin-top: -97px;
-    margin-right: 121px;
+    height: 44px;
+    width: 10px;
+    margin-top: -133px;
+    margin-right: 163px;
     color: black;
     text-align: center;
     position: absolute;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    border: 1px groove #d4d4dd;
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 
 }
 
@@ -147,7 +153,7 @@
     width: 25px;
     position: absolute;
     margin-top: 223px;
-    margin-right: 96px;
+    margin-right: 33px;
     color: black;
     text-align: center;
     border: 1px solid #00ffd5;
@@ -169,25 +175,16 @@
 
 /* heater code start */
 .dashboard .main-layout .cstr-layout .process .pump-cv-1 .heater {
-    width: 80px;
-    height: 200px;
-    background: linear-gradient(grey, rgb(219, 221, 209));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 10px;
+    width: 150px;
+    height: 150px;
     position: relative;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    align-self: self-start;
 }
 
-
-
-.dashboard .main-layout .cstr-layout .process .heater .heater-display {
-    width: 100%;
-    height: 70%;
-    background-color: #797c7e;
+.dashboard .main-layout .cstr-layout .process .pump-cv-1 .heater img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
 }
 
 /* heater code end  */
@@ -255,19 +252,17 @@
 }
 
 .dashboard .main-layout .cstr-layout .process .pump {
-    width: 100px;
+    width: 100%;
     height: 200px;
     /* border: 2px solid #ebe9e9; */
     display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     flex-direction: column;
 }
 
 .dashboard .main-layout .cstr-layout .process .pump .pump-display {
     height: 50px;
-    /* width: 100px; */
+    width: 150px;
     display: flex;
     padding: 0;
     justify-content: start;
@@ -275,13 +270,6 @@
 }
 
 
-.dashboard .main-layout .cstr-layout .process .pump .pump-display #pump-text {
-    display: inline;
-    color: black;
-    align-self: flex-start;
-    width: 90px;
-    background-color: yellowgreen;
-}
 
 .dashboard .main-layout .cstr-layout .process .pump .pump-display #heater-pump {
     font-size: 10px;
@@ -304,15 +292,13 @@
 
 
 .dashboard .main-layout .cstr-layout .process .pump .pump-img {
-    height: 50px;
-    width: 200px;
+    height: 70px;
+    width: 100px;
     /* background-color: #333; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    /* position: relative; */
-    /* border: 2px inset white; */
 }
 
 #middle-arrow {
@@ -324,15 +310,10 @@
 }
 
 .dashboard .main-layout .cstr-layout .process .pump .pump-img img {
-    height: 50px;
-    width: 50px;
+    height: 140px;
+    width: 150px;
     object-fit: contain;
-    /* keeps image ratio */
     display: block;
-    /* margin: auto; */
-    /* margin-right: 5px; */
-    box-shadow: inset 0px 4px 8px black;
-    border-radius: 50%;
 }
 
 
@@ -431,8 +412,8 @@
 
 /* stirrer code start  */
 .stirrer {
-    height: 80px;
-    width: 50px;
+    height: 53px;
+    width: 200px;
     /* background-color: #333; */
     display: flex;
     justify-content: center;
@@ -442,37 +423,20 @@
     margin-top: -50px;
 }
 
-.stirrer .stirrer-motor {
-    height: 100px;
-    width: 50px;
-    background-color: #555;
-    border: 2px inset white;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    text-align: center;
+.stirrer img {
+    height: 130px;
+    width: 226px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
 }
+
 
 h3 {
     display: inline;
 }
 
-.stirrer .stirrer-motor #motor-condition {
-    color: green;
-    font-size: 12px;
-    animation: blink 1s ease infinite;
-    background-color: #aaa;
-    padding: 0px 7px 0px 7px;
-    display: inline;
 
-}
-
-.stirrer .stirrer-rod {
-    height: 50px;
-    width: 8px;
-    background-color: black;
-    border: 2px inset white;
-    animation: rotate 2s linear infinite;
-}
 
 /* pressure transmitter code  */
 .pressure-box {
@@ -536,8 +500,8 @@ h3 {
 
 /* reactor code start  */
 .dashboard .main-layout .cstr-layout .process .reactor {
-    width: 120px;
-    height: 200px;
+    width: 300px;
+    height: 320px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -552,12 +516,13 @@ h3 {
 }
 
 .reactor-img img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 320px;
     object-fit: contain;
     /* keeps image ratio */
     display: block;
     margin: auto;
+    overflow: hidden;
 }
 
 
@@ -778,23 +743,20 @@ h3 {
 }
 
 .dashboard .main-layout .cstr-layout .process .All-pumps #pump-A {
-    width: 200px;
-    height: 80px;
+    height: 70px;
+    width: 100px;
+    /* background-color: #333; */
     display: flex;
-    /* background: linear-gradient(grey, grey, black); */
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    padding: 0;
-    /* border: 2px solid white; */
 }
 
-.dashboard .main-layout .cstr-layout .process .All-pumps #pump-text {
-    display: inline;
-    color: black;
-    align-self: flex-start;
-    width: 90px;
-    background-color: yellowgreen;
+.dashboard .main-layout .cstr-layout .process .All-pumps #pump-A img {
+    height: 120px;
+    width: 130px;
+    object-fit: contain;
+    display: block;
 }
 
 .dashboard .main-layout .cstr-layout .process .All-pumps #pump-A #reactant-pump-A {
@@ -821,29 +783,22 @@ h3 {
     font-size: 10px;
 }
 
-.dashboard .main-layout .cstr-layout .process .All-pumps #pump-A #pumpStatus-1 {
-    height: 50px;
-    width: 50px;
-    object-fit: contain;
-    /* keeps image ratio */
-    display: block;
-    animation: pump-1 3s linear infinite;
-    /* margin-left: -50px; */
-    box-shadow: inset 0px 4px 8px black;
-    border-radius: 50%;
-}
-
 
 .dashboard .main-layout .cstr-layout .process .All-pumps #pump-B {
-    width: 200px;
-    height: 80px;
+    height: 70px;
+    width: 100px;
+    /* background-color: #333; */
     display: flex;
-    /* background: linear-gradient(grey, grey, black); */
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    padding: 0;
-    /* border: 2px solid white; */
+}
+
+.dashboard .main-layout .cstr-layout .process .All-pumps #pump-B img {
+    height: 120px;
+    width: 130px;
+    object-fit: contain;
+    display: block;
 }
 
 .dashboard .main-layout .cstr-layout .process .All-pumps #pump-B #reactant-pump-B {
@@ -869,17 +824,6 @@ h3 {
     font-size: 10px;
 }
 
-.dashboard .main-layout .cstr-layout .process .All-pumps #pump-B #pumpStatus-2 {
-    height: 50px;
-    width: 50px;
-    object-fit: contain;
-    /* keeps image ratio */
-    display: block;
-    animation: pump-1 3s linear infinite;
-    /* margin-left: -50px; */
-    box-shadow: inset 0px 4px 8px black;
-    border-radius: 50%;
-}
 
 
 /* tank code start  */
