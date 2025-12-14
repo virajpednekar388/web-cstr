@@ -1,0 +1,125 @@
+/* ===============================
+   LOGIN PAGE ONLY – LIGHT MODE
+   =============================== */
+
+/* Center login box */
+.logincontainer {
+    width: 100%;
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 28px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1),
+                inset 0 0 10px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.8s ease;
+}
+
+/* Heading */
+.logincontainer h2 {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    color: #222222;
+}
+
+/* Logo */
+.logincontainer .image {
+    text-align: center;
+    margin-bottom: 18px;
+    height: 100%;
+    width: 100%;
+}
+
+.logincontainer .image img {
+    width: 315px;
+    max-width: 100%;
+}
+
+/* Inputs */
+.logincontainer input[type="text"],
+.logincontainer input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #222222;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+/* Focus effect */
+.logincontainer input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Login button (touch friendly) */
+#login-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 16px;
+    background: linear-gradient(45deg, #4da6ff, #1a75ff);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#login-button:hover {
+    background: linear-gradient(45deg, #2b6fb2, #1a3f7f);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Error message */
+.logincontainer p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #ff4d4d;
+}
+
+/* ===============================
+   RESPONSIVE BEHAVIOR
+   =============================== */
+
+/* Mobile */
+@media (max-width: 480px) {
+    .logincontainer {
+        margin: 30px 12px;
+        padding: 22px;
+    }
+
+    .logincontainer h2 {
+        font-size: 1.2rem;
+    }
+
+    #login-button {
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .logincontainer {
+        max-width: 360px;
+    }
+}
+
+/* Fade animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

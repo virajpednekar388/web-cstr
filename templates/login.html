@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 <div class="logincontainer">
 <h2>Login</h2>
 <div class="image"><img src="{{ url_for('static', filename='logo.jpeg') }}" alt="logo"></div>

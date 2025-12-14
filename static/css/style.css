@@ -1,37 +1,20 @@
-/* === CSS Variables for Light and Dark Themes === */
+/* === CSS Variables for Light Theme (Global Only) === */
 :root {
-    --bg-color: #1e1e2f;
-    --text-color: #f7f7f7;
-    --nav-bg: linear-gradient(90deg, #2c2c3c, #1b1b2a);
-    --nav-link: #f7f7f7;
-    --nav-hover: #ffa500;
-    --container-bg: #2c2c3c;
-    --card-bg: #38384f;
-    --input-bg: #3b3b4f;
-    --input-border: #555;
-    --btn-bg: linear-gradient(45deg, #4da6ff, #1a75ff);
-    --btn-text: #000;
+    --bg-color: linear-gradient(145deg, #f8f8f8, #ffffff);
+    --text-color: #222222;
+    --nav-bg: linear-gradient(145deg, #f8f8f8, #ffffff);
+    --nav-link: #222222;
+    --nav-hover: #007bff;
+    --container-bg: linear-gradient(145deg, #f8f8f8, #ffffff);
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --input-border: #ccc;
+    --btn-bg: #fff;
+    --btn-text: #fff;
     --btn-hover-bg: linear-gradient(45deg, #2b6fb2, #1a3f7f);
     --btn-hover-text: #fff;
-    --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
-[data-theme="dark"] {
-    --bg-color: #1e1e2f;
-    --text-color: #f7f7f7;
-    --nav-bg: linear-gradient(90deg, #2c2c3c, #1b1b2a);
-    --nav-link: #f7f7f7;
-    --nav-hover: #ffa500;
-    --container-bg: #2c2c3c;
-    --card-bg: #38384f;
-    --input-bg: #3b3b4f;
-    --input-border: #555;
-    --btn-bg: linear-gradient(45deg, #4da6ff, #1a75ff);
-    --btn-text: #000;
-    --btn-hover-bg: linear-gradient(45deg, #2b6fb2, #1a3f7f);
-    --btn-hover-text: #fff;
-    --shadow-color: rgba(0, 0, 0, 0.5);
-}
 
 /* === Global Styles === */
 * {
@@ -44,25 +27,19 @@
 body {
     margin: 0 auto;
     color: var(--text-color);
-    background: linear-gradient(145deg, #0d1117, #1a1a1a);
+    /* background: linear-gradient(145deg, #f8f8f8, #ffffff); */
     width: 100%;
     overflow-x: hidden;
     line-height: 1.5;
 }
 
-/* Container */
+/* Container (global) */
 .container {
     max-width: 210vh;
-    margin: 20px auto;
-    padding: 10px 20px;
-    /* background: var(--container-bg); */
-    background: linear-gradient(145deg, #0d1117, #1a1a1a);
-    border-radius: 10px;
-    /* box-shadow: 0 0 20px var(--shadow-color); */
     animation: fadeIn 0.8s ease;
 }
 
-/* Headings */
+/* Headings (global) */
 h2 {
     text-align: center;
     color: var(--text-color);
@@ -75,7 +52,6 @@ nav {
     padding: 15px 20px;
     border-radius: 10px;
     /* background: var(--nav-bg); */
-    background: linear-gradient(145deg, #0d1117, #1a1a1a);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -95,8 +71,7 @@ nav a::after {
     height: 2px;
     bottom: -2px;
     left: 0;
-    /* background-color: var(--nav-hover); */
-    background: linear-gradient(145deg, #0d1117, #1a1a1a);
+    background: var(--nav-hover);
     transition: width 0.3s ease;
 }
 
@@ -108,7 +83,7 @@ nav a:hover {
     color: var(--nav-hover);
 }
 
-/* Buttons */
+/* Buttons (global) */
 .btn {
     background: var(--btn-bg);
     color: var(--btn-text);
@@ -121,80 +96,27 @@ nav a:hover {
     transition: all 0.3s ease;
 }
 
-#login-button {
-    background: var(--btn-bg);
-    color: var(--btn-text);
-    padding: 10px 5px;
-    width: 96%;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    box-shadow: 0 0 10px var(--shadow-color);
-    transition: all 0.3s ease;
-}
-
-.btn:hover,
-#login-button:hover {
-    background: var(--btn-hover-bg);
-    color: var(--btn-hover-text);
-    box-shadow: 0 0 15px var(--btn-hover-text);
-    transform: translateY(-2px);
-}
-
-/* Cards / Containers */
-.logincontainer,
-.aboutcontainer {
-    width: 495px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 12px;
-    /* background: var(--card-bg); */
-    background: linear-gradient(145deg, #0d1117, #1a1a1a);
-    color: var(--text-color);
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
-    animation: fadeInUp 0.8s ease;
-    border: 1px solid #00ffd5;
-}
-
-.aboutcontainer {
-    width: 100%;
-    background: var(--card-bg);
-}
-
-/* Inputs */
+/* Input fields (global) */
 input[type="text"],
 input[type="password"] {
-    width: 96%;
-    padding: 15px;
-    margin: 6px 0;
-    border-radius: 8px;
-    color: var(--text-color);
+    color: #222222;
+    background: var(--input-bg);
     border: 1px solid var(--input-border);
-    /* background: var(--input-bg); */
-    background: linear-gradient(145deg, #0d1117, #1a1a1a);
     transition: all 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
 }
 
+/* Focus effect for global inputs */
 input[type="text"]:focus,
 input[type="password"]:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 8px #3498db;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
-/* Paragraphs / Error messages */
-p {
-    text-align: center;
-    font-size: 14px;
-}
-
-/* === Animations === */
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -205,7 +127,6 @@ p {
         opacity: 0;
         transform: translateY(20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);

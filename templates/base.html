@@ -13,13 +13,12 @@
         {% if session.get('user') %}
             <a href="{{ url_for('logout') }}">Logout</a>
         {% endif %}
-        <a href="{{ url_for('dashboard') }}">Dashboard</a> |
-        <a href="{{ url_for('Trends') }}">Trends</a> |
-        <a href="{{ url_for('DataLog') }}">Log</a> |
-        <a href="{{ url_for('about') }}">About Us</a> |
+        <a href="{{ url_for('dashboard') }}">Dashboard</a> 
+        <a href="{{ url_for('Trends') }}">Trends</a> 
+        <a href="{{ url_for('DataLog') }}">Log</a> 
+        <a href="{{ url_for('about') }}">About Us</a> 
         <!-- <button id="theme-toggle" class="btn">Toggle Dark Mode</button> -->
     </nav>
-    <hr>
     <div class="container">
         {% block content %}{% endblock %}
     </div>
