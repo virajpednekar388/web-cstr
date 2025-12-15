@@ -64,12 +64,6 @@
                             <div class="pump">
                                 <div class="pump-img">
                                     <img id="pumpStatus" src="{{ url_for('static', filename='hpump.png') }}" alt="Pump">
-                                    <div id="middle-arrow"></div>
-                                    <div class="pump-display">
-                                        <div>
-                                            <h1 id="heater-pump">pump 1</h1>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="float-switch"></div>
@@ -117,7 +111,7 @@
                             <div class="reactor-img">
                                 <img src="{{ url_for('static', filename='tank-111.png') }}" alt="Tank">
                             </div>
-                            <div class="tank-outside">
+                            <!-- <div class="tank-outside">
                                 <div class="reactor_bar" id="reactor_value">
                                 </div>
                                 <div class="scale-number">
@@ -127,18 +121,17 @@
                                     <div class="scale">-25%</div>
                                     <div class="scale">-0%</div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <!-- ----------in this section we have to display the actual value of the Temperature ------------>
                         <div class="Temp-display">
-                            <div class="RTD-img">
-                                <img src="{{ url_for('static', filename='TT.png') }}" alt="RTD">
-                            </div>
-
                             <div class="Temp-box">
                                 <span>Temparature</span>
                                 <span id="Temp-Value">--</span>
+                            </div>
+                            <div class="RTD-img">
+                                <img src="{{ url_for('static', filename='TT.png') }}" alt="RTD">
                             </div>
                         </div>
 
@@ -171,18 +164,10 @@
 
                                 <img id="pumpStatus-1" src="{{ url_for('static', filename='hpump2.png') }}"
                                     alt="pump">
-                                <div id="middle-arrow"></div>
-                                <span id="reactant-pump-A">
-                                    <h1>pump 2</h1>
-                                </span>
                             </div>
                             <div id="pump-B">
                                 <img id="pumpStatus-2" src="{{ url_for('static', filename='hpump2.png') }}"
                                     alt="pump">
-                                <div id="middle-arrow"></div>
-                                <span id="reactant-pump-B">
-                                    <h1>pump 3</h1>
-                                </span>
                             </div>
                         </div>
                         <!-- tank product -->
