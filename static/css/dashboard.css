@@ -105,26 +105,24 @@
 /* ---------section 1, pipe section start here-----------  */
 
 .pipe-1 {
-    height: 71px;
+    height: 127px;
     width: 10px;
-    margin-top: 8px;
-    margin-right: 390px;
+    margin-top: 62px;
+    margin-right: 393px;
     color: black;
     text-align: center;
     position: absolute;
-    border: 1px groove #d4d4dd;
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-
 .pipe-2 {
     height: 44px;
-    width: 10px;
+    width: 11px;
     margin-top: -133px;
-    margin-right: 163px;
+    margin-right: 73px;
     color: black;
     text-align: center;
     position: absolute;
@@ -137,40 +135,67 @@
 }
 
 .pipe-3 {
-    height: 2px;
-    width: 149px;
-    margin-top: -139px;
-    margin-right: -26px;
-    color: black;
-    text-align: center;
+    height: 11px;
+    width: 99px;
+    margin-top: -171px;
+    margin-right: -17px;
     position: absolute;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-top-left-radius: 5px;
 }
 
 .pipe-4 {
-    height: 1.5px;
-    width: 25px;
+    height: 11px;
+    width: 78px;
     position: absolute;
-    margin-top: 223px;
-    margin-right: 33px;
-    color: black;
-    text-align: center;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    margin-top: 196px;
+    margin-right: 326px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-left-radius: 5px;
+}
+
+.pipe-4-4 {
+    height: 11px;
+    width: 54px;
+    position: absolute;
+    margin-top: -53px;
+    margin-right: 339px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-top-left-radius: 5px;
+}
+
+.pipe-4-4-1 {
+    height: 11px;
+    width: 54px;
+    position: absolute;
+    margin-top: -98px;
+    margin-right: 117px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-right-radius: 5px;
 }
 
 .pipe-5 {
-    height: 2px;
-    width: 135px;
+    height: 11px;
+    width: 152px;
     position: absolute;
-    margin-top: -137px;
-    margin-right: -395px;
-    color: black;
-    text-align: center;
-    z-index: 10;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    margin-top: -172px;
+    margin-right: -334px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-right-radius: 5px;
 }
 
 /* heater code start */
@@ -185,6 +210,7 @@
     width: 150px;
     height: 150px;
     object-fit: contain;
+    transform: scaleX(-1);
 }
 
 /* heater code end  */
@@ -283,91 +309,66 @@
 /* ---------------------section 2 start here-----------------  */
 
 .pipe-6 {
-    height: 139px;
-    width: 2.5px;
+    height: 206px;
+    width: 10px;
     position: absolute;
-    margin-top: 200px;
-    margin-right: -8px;
-    color: black;
-    text-align: center;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    margin-top: 232px;
+    margin-right: -10px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-right-radius: 5px;
 }
 
 .pipe-7 {
-    height: 2px;
-    width: 52px;
+    height: 11px;
+    width: 173px;
+    margin-top: 426px;
+    margin-right: -177px;
     position: absolute;
-    margin-top: 336px;
-    margin-right: -62px;
-    color: black;
-    text-align: center;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-right-radius: 5px;
 }
 
 .pipe-8 {
-    height: 2px;
-    width: 132px;
+    height: 11px;
+    width: 202px;
+    margin-top: -247px;
+    margin-right: -370px;
     position: absolute;
-    margin-top: -239px;
-    margin-right: -232px;
-    color: black;
-    text-align: center;
-    z-index: 10;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-right-radius: 5px;
 }
 
+
 .pipe-9 {
-    height: 105px;
-    width: 2px;
+    height: 11px;
+    width: 86px;
+    margin-top: -87px;
+    margin-right: -487px;
     position: absolute;
-    margin-top: -134px;
-    margin-right: -175px;
-    color: black;
-    text-align: center;
-    z-index: 10;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-right-radius: 5px;
 }
 
 .pipe-10 {
-    height: 2px;
-    width: 98px;
+    height: 82px;
+    width: 10px;
     position: absolute;
-    margin-top: -32px;
-    margin-right: -275px;
-    color: black;
-    text-align: center;
-    z-index: 10;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
-}
-
-.pipe-11 {
-    height: 39px;
-    width: 2px;
+    margin-top: -158px;
+    margin-right: -407px;
     position: absolute;
-    margin-top: -198px;
-    margin-right: -103px;
-    color: black;
-    text-align: center;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
-    /* z-index: 10; */
-}
-
-.pipe-12 {
-    height: 2px;
-    width: 210px;
-    position: absolute;
-    margin-top: 336px;
-    margin-right: -221px;
-    color: black;
-    text-align: center;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-left-radius: 5px;
 }
 
 
