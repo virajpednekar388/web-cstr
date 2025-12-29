@@ -116,6 +116,7 @@
     background: linear-gradient(#010166);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-2 {
@@ -131,6 +132,7 @@
     background: linear-gradient(#010166);
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    border: 1px groove white;
 
 }
 
@@ -144,6 +146,7 @@
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-top-left-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-4 {
@@ -157,19 +160,21 @@
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-bottom-left-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-4-4 {
     height: 11px;
-    width: 54px;
+    width: 59px;
     position: absolute;
     margin-top: -53px;
-    margin-right: 339px;
+    margin-right: 344px;
     position: absolute;
     /* border: 1px groove #d4d4dd; */
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-top-left-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-4-4-1 {
@@ -183,6 +188,7 @@
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-bottom-right-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-5 {
@@ -196,6 +202,7 @@
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-bottom-right-radius: 5px;
+    border: 1px groove white;
 }
 
 /* heater code start */
@@ -311,26 +318,27 @@
 .pipe-6 {
     height: 206px;
     width: 10px;
-    position: absolute;
     margin-top: 232px;
     margin-right: -10px;
     position: absolute;
     /* border: 1px groove #d4d4dd; */
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-7 {
     height: 11px;
-    width: 173px;
+    width: 175px;
     margin-top: 426px;
     margin-right: -177px;
     position: absolute;
     /* border: 1px groove #d4d4dd; */
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
-    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-8 {
@@ -343,6 +351,7 @@
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-bottom-right-radius: 5px;
+    border: 1px groove white;
 }
 
 
@@ -356,6 +365,7 @@
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-bottom-right-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-10 {
@@ -369,6 +379,7 @@
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
     background: linear-gradient(#010166);
     border-bottom-left-radius: 5px;
+    border: 1px groove white;
 }
 
 
@@ -538,7 +549,7 @@ h3 {
     width: 200px;
     /* background-color: #555; */
     margin-top: 150px;
-    margin-right: 195px;
+    margin-right: 180px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -639,29 +650,30 @@ h3 {
 
 /* -----------------section 3 pipe code start here------------------ */
 .pipe-15 {
-    height: 2px;
-    width: 237px;
-    position: absolute;
+    height: 11px;
+    width: 188px;
     margin-top: -202px;
-    margin-right: -51px;
-    color: black;
-    text-align: center;
-    z-index: 10;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    margin-right: -244px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-right-radius: 5px;
+    border: 1px groove white;
 }
 
 .pipe-16 {
-    height: 2px;
-    width: 235px;
+    height: 11px;
+    width: 120px;
+    margin-top: -44px;
+    margin-right: -176px;
     position: absolute;
-    margin-top: -33px;
-    margin-right: -51px;
-    color: black;
-    text-align: center;
-    z-index: 10;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    /* border-bottom-right-radius: 5px; */
+    border: 1px groove white;
+    border-top-right-radius: 5px;
 }
 
 .pipe-17 {
@@ -679,17 +691,112 @@ h3 {
 }
 
 .pipe-18 {
-    height: 97px;
-    width: 2px;
-    position: absolute;
+    height: 117px;
+    width: 10px;
     margin-top: 63px;
     margin-right: -285px;
-    color: black;
-    text-align: center;
-    z-index: 10;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px groove white;
 }
+
+.pipe-1-18 {
+    height: 73px;
+    width: 10px;
+    margin-top: 269px;
+    margin-right: -36px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(87, 45, 3), inset 0 0 10px rgb(204, 212, 42);
+    background: linear-gradient(#5c6601, #000000);
+    border-top-left-radius: 5px;
+    border: 1px groove white;
+}
+
+.pipe-2-18 {
+    height: 266px;
+    width: 11px;
+    margin-top: -58px;
+    margin-right: -155px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(87, 45, 3), inset 0 0 10px rgb(204, 212, 42);
+    background: linear-gradient(#5c6601, #000000);
+    border-top-left-radius: 5px;
+    border: 1px groove white;
+}
+
+.pipe-3-18 {
+    height: 11px;
+    width: 71px;
+    margin-top: 203px;
+    margin-right: -98px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(87, 45, 3), inset 0 0 10px rgb(204, 212, 42);
+    background: linear-gradient(#5c6601, #000000);
+    /* border-bottom-right-radius: 5px; */
+    border: 1px groove white;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pipe-4-18 {
+    height: 11px;
+    width: 193px;
+    margin-top: -313px;
+    margin-right: -339px;
+    position: absolute;
+    box-shadow: inset 0 0 20px rgb(87, 45, 3), inset 0 0 10px rgb(204, 212, 42);
+    background: linear-gradient(#5c6601, #000000);
+    border: 1px groove white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pipe-5-18 {
+    height: 69px;
+    width: 11px;
+    margin-top: -254px;
+    margin-right: -520px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(87, 45, 3), inset 0 0 10px rgb(204, 212, 42);
+    background: linear-gradient(#5c6601, #000000);
+    border-top-right-radius: 5px;
+    border: 1px groove white;
+}
+
+.pipe-6-18 {
+    height: 11px;
+    width: 193px;
+    margin-top: 52px;
+    margin-right: -339px;
+    position: absolute;
+    box-shadow: inset 0 0 20px rgb(87, 45, 3), inset 0 0 10px rgb(204, 212, 42);
+    background: linear-gradient(#5c6601, #000000);
+    border: 1px groove white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.pipe-7-18 {
+    height: 69px;
+    width: 11px;
+    margin-top: 111px;
+    margin-right: -520px;
+    position: absolute;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(87, 45, 3), inset 0 0 10px rgb(204, 212, 42);
+    background: linear-gradient(#5c6601, #000000);
+    border-top-right-radius: 5px;
+    border: 1px groove white;
+}
+
 
 /* all pumps code  */
 .dashboard .main-layout .cstr-layout .process .All-pumps {
@@ -701,6 +808,7 @@ h3 {
     /* align-self: self-start; */
     text-align: center;
     gap: 10px;
+    margin-bottom:35px;
 
 }
 
@@ -742,21 +850,32 @@ h3 {
 
 /* tank code start  */
 .dashboard .main-layout .cstr-layout .tank-product {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(grey, rgb(219, 221, 209));
+    width: 318px;
+    height: 238px;
     display: flex;
     justify-content: center;
-    align-self: start;
+    align-self: flex-end;
     color: black;
     transition: all 400ms ease;
-    margin-top: 72px;
-    border-radius: 10px;
-    border: 2px groove whitesmoke;
+    margin-bottom: -125px;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 40px;
+    /* background-color: #00a3a3; */
 }
 
-.dashboard .main-layout .cstr-layout .tank-product #product-text {
+.dashboard .main-layout .cstr-layout .tank-product .product-text {
     font-size: 10px;
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 0px;
+
+}
+
+.dashboard .main-layout .cstr-layout .tank-product img{
+    height: 50%;
+    width: 100%;
+    object-fit: cover;
 }
 
 
@@ -768,27 +887,17 @@ h3 {
 /* ------------------section 4 pipe code start here--------------- */
 
 .pipe-19 {
-    height: 2px;
-    width: 113px;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
+    height: 12px;
+    width: 81px;
+    margin-top: 167px;
+    margin-right: 277px;
     position: absolute;
-    margin-top: 158px;
-    margin-right: 239px;
-    color: black;
-    text-align: center;
-}
-
-.pipe-20 {
-    height: 2px;
-    width: 105px;
-    border: 1px solid #00ffd5;
-    box-shadow: 0 0 20px rgba(0, 255, 213, 0.3), inset 0 0 10px rgba(0, 255, 213, 0.1);
-    position: absolute;
-    margin-top: -72px;
-    margin-right: 245px;
-    color: black;
-    text-align: center;
+    /* border: 1px groove #d4d4dd; */
+    box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
+    background: linear-gradient(#010166);
+    border-bottom-left-radius: 5px;
+    border: 1px groove white;
+    z-index: -1;
 }
 
 
