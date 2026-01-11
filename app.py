@@ -50,11 +50,6 @@ def dashboard():
         return redirect(url_for("login"))
     return render_template("dashboard.html")
 
-@app.route("/About")
-def about():
-    if "user" not in session:
-        return redirect(url_for("login"))
-    return render_template("About.html", user=session.get("user"))
 
 @app.route("/DataLog")
 def DataLog():
