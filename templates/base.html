@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
     </style>
 </head>
+
 <body data-theme="light">
+    <h2 id="head-nav"><span style="color: orange;">Industrial.</span>SCADA</h2>
     <nav>
-        {% if session.get('user') %}
+        <div id="in-logo">
+            <img src="{{ url_for('static', filename='scada-logo.png') }}" alt="PT">
+        </div>
+
+        <div class="Links-Name">
+            {% if session.get('user') %}
             <a href="{{ url_for('logout') }}">Logout</a>
-        {% endif %}
-        <a href="{{ url_for('dashboard') }}">Dashboard</a> 
-        <a href="{{ url_for('Trends') }}">Trends</a> 
-        <a href="{{ url_for('DataLog') }}">Log</a> 
-        <!-- <button id="theme-toggle" class="btn">Toggle Dark Mode</button> -->
+            {% endif %}
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('Trends') }}">Trends</a>
+            <a href="{{ url_for('DataLog') }}">Log</a>
+        </div>
+
+        <div id="status" class="unknown">Checking...</div>
+
     </nav>
+
     <div class="container">
         {% block content %}{% endblock %}
     </div>
 
-    <!-- Scripts -->
     <script>
-        const toggleBtn = document.getElementById('theme-toggle');
+        const toggle = document.getElementById('theme-toggle');
         const body = document.body;
 
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            body.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        toggle.checked = savedTheme === 'dark';
+
+        toggle.addEventListener('change', () => {
+            const theme = toggle.checked ? 'dark' : 'light';
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
         });
     </script>
+
+    <script src="/static/js/status.js"></script>
 </body>
+
 </html>

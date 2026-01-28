@@ -4,6 +4,9 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from plc_logic import read_plc_registers
+from flask import jsonify, request
+from plc_logic import is_plc_connected
+# from db_logic import fetch_scada_logs, fetch_scada_trends
 
 # ---------- Configuration ----------
 PLC_IP = "192.168.1.1"
@@ -21,6 +24,43 @@ users = {
     "om": generate_password_hash("om@123"),
 }
 
+@app.route("/plc-status")
+def plc_status():
+    connected = is_plc_connected()
+    return jsonify({
+        "connected": connected
+    }) 
+    
+# ------------------ DATA LOG ------------------
+@app.route("/api/logs")
+def api_logs():
+    """
+    Returns the latest 100 (or limit) rows from scada_data.
+    """
+    try:
+        limit = int(request.args.get("limit", 100))
+        rows = fetch_scada_logs(limit=limit)
+        return jsonify(rows)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# ------------------ TRENDS ------------------
+@app.route("/api/trends")
+def api_trends():
+    """
+    Returns aggregated historical SCADA data for Trends chart.
+    Query params:
+        interval: "minute" or "hour" (default: minute)
+        limit: number of points (default: 100)
+    """
+    try:
+        interval = request.args.get("interval", "minute")
+        limit = int(request.args.get("limit", 100))
+        rows = fetch_scada_trends(interval=interval, limit=limit)
+        return jsonify(rows)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
 # ---------- Routes ----------
 @app.route("/")
 def home():

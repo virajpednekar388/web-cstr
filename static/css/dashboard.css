@@ -2,11 +2,11 @@
 .dashboard {
     min-width: 115rem;
     height: auto;
-    color: white;
+    color: var(--nav-link);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding-top: 70px;
 }
 
 /* main layout of cstr  */
@@ -50,10 +50,31 @@
 
 
 .dashboard .main-layout .cstr-layout header h1 {
-    color: black;
+    color: var(--nav-link-2);
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 117px;
+    transition: all 0.3s ease;
 }
+
+.dashboard .main-layout .cstr-layout header h1::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: var(--nav-hover);
+    transition: all 0.3s ease;
+}
+
+.dashboard .main-layout .cstr-layout header h1:hover::after {
+    width: 100%;
+}
+
+.dashboard .main-layout .cstr-layout header h1:hover{
+    color: rgb(14, 14, 102);
+}
+
 
 .dashboard .main-layout .cstr-layout .layout {
     display: flex;
@@ -74,7 +95,7 @@
 
 .green {
     background: #4CAF50;
-    color: white;
+    color: var(--nav-link);
 }
 
 
@@ -85,9 +106,10 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    height: 550px;
+    height: 500px;
     min-width: 100rem;
     align-self: center;
+    margin-left: 90px;
 }
 
 /* -------------section 1 code start--------  */
@@ -113,7 +135,8 @@
     text-align: center;
     position: absolute;
     box-shadow: inset 0 0 20px rgb(30, 82, 237), inset 0 0 10px rgb(13, 5, 105);
-    background: linear-gradient(#010166);
+    /* background: linear-gradient(#010166); */
+    background: #1f4fd8;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border: 1px groove white;
@@ -433,8 +456,8 @@ h3 {
 }
 
 .pressure-box #pressure-display {
-    height: 40px;
-    width: 283px;
+    height: 50px;
+    width: 200px;
     display: block;
     background: grey;
     /* border-radius: 10px; */
@@ -451,9 +474,15 @@ h3 {
     font-size: 10px;
     background: black;
     width: 50%;
+    height: 20px;
     text-align: center;
     text-shadow: 0 0 8px #00ffd5, 0 0 15px #00a3a3;
     color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
 }
 
 .pressure-box img {
@@ -578,6 +607,9 @@ h3 {
     background: linear-gradient(grey);
     text-align: center;
     border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .Temp-display .Temp-box #Temp-Value {
@@ -585,14 +617,20 @@ h3 {
     font-size: 10px;
     background: black;
     width: 50%;
+    height: 20px;
     text-align: center;
     text-shadow: 0 0 8px #00ffd5, 0 0 15px #00a3a3;
     color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
 }
 
 .Temp-display .Temp-box span {
     font-size: 10px;
-    color: white;
+    color: var(--nav-link);
     display: block;
 }
 
@@ -897,7 +935,7 @@ h3 {
     background: linear-gradient(#010166);
     border-bottom-left-radius: 5px;
     border: 1px groove white;
-    z-index: -1;
+    z-index: 0;
 }
 
 

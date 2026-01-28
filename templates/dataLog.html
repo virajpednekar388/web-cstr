@@ -1,6 +1,66 @@
 {% extends "base.html" %}
-{% block title %}log{% endblock %}
-{% block content %}
+{% block title %}Data Log{% endblock %}
 
-hii i amm trends page 
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/logData.css') }}">
+
+<div class="log-container">
+    <h2>Data Log</h2>
+
+    <div style="overflow-x:auto; margin-top:20px;">
+        <table id="datalog-table" style="width:100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: var(--card-bg); color: var(--text-color);">
+                    <th style="padding: 8px; border-bottom: 1px solid var(--input-border);">Timestamp</th>
+                    <th style="padding: 8px; border-bottom: 1px solid var(--input-border);">Temperature</th>
+                    <th style="padding: 8px; border-bottom: 1px solid var(--input-border);">Pressure</th>
+                </tr>
+            </thead>
+            <tbody id="datalog-body">
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    async function loadDataLog() {
+        try {
+            const res = await fetch('/api/logs?limit=100');
+            const data = await res.json();
+
+            const tbody = document.getElementById('datalog-body');
+            tbody.innerHTML = "";
+
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                <td style="padding: 8px; border-bottom: 1px solid var(--input-border);">${row.timestamp}</td>
+                <td style="padding: 8px; border-bottom: 1px solid var(--input-border);">${row.temperature}</td>
+                <td style="padding: 8px; border-bottom: 1px solid var(--input-border);">${row.pressure}</td>
+            `;
+                tbody.appendChild(tr);
+            });
+        } catch (err) {
+            console.error("Failed to load data log:", err);
+            const tbody = document.getElementById('datalog-body');
+            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:red;">Failed to load data</td></tr>`;
+        }
+    }
+
+    // Initialize table on page load
+    loadDataLog();
+
+    // Optional: auto-refresh every 60 seconds
+    setInterval(loadDataLog, 60000);
+
+    // Listen for dark/light theme changes
+    const observer = new MutationObserver(() => {
+        const ths = document.querySelectorAll('#datalog-table th');
+        ths.forEach(th => th.style.color = getComputedStyle(document.body).getPropertyValue('--text-color'));
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
+
+</script>
+
 {% endblock %}
