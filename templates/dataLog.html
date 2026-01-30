@@ -5,62 +5,109 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/logData.css') }}">
 
 <div class="log-container">
-    <h2>Data Log</h2>
+  <h2>Data Log</h2>
 
-    <div style="overflow-x:auto; margin-top:20px;">
-        <table id="datalog-table" style="width:100%; border-collapse: collapse;">
-            <thead>
-                <tr style="background: var(--card-bg); color: var(--text-color);">
-                    <th style="padding: 8px; border-bottom: 1px solid var(--input-border);">Timestamp</th>
-                    <th style="padding: 8px; border-bottom: 1px solid var(--input-border);">Temperature</th>
-                    <th style="padding: 8px; border-bottom: 1px solid var(--input-border);">Pressure</th>
-                </tr>
-            </thead>
-            <tbody id="datalog-body">
-                <!-- Data will be populated here -->
-            </tbody>
-        </table>
-    </div>
+  <div class="log-controls">
+    <select id="preset">
+      <option value="24h" selected>Last 24 hours</option>
+      <option value="1h">Last 1 hour</option>
+      <option value="10m">Last 10 min</option>
+      <option value="">Custom</option>
+    </select>
+
+    <label>From:
+      <input id="fromTs" type="datetime-local">
+    </label>
+
+    <label>To:
+      <input id="toTs" type="datetime-local">
+    </label>
+
+    <button id="applyBtn">Apply</button>
+  </div>
+
+  <div class="table-wrap">
+    <table id="datalog-table">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Temperature</th>
+          <th>Pressure</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody id="datalog-body">
+        <tr><td colspan="4" class="muted">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <script>
-    async function loadDataLog() {
-        try {
-            const res = await fetch('/api/logs?limit=100');
-            const data = await res.json();
+  function toISO(dtLocalValue) {
+    if (!dtLocalValue) return "";
+    return new Date(dtLocalValue).toISOString();
+  }
 
-            const tbody = document.getElementById('datalog-body');
-            tbody.innerHTML = "";
+  function fmt(v, unit, decimals=2) {
+    if (v === null || v === undefined) return "--";
+    const n = Number(v);
+    if (!Number.isFinite(n)) return "--";
+    return n.toFixed(decimals) + " " + unit;
+  }
 
-            data.forEach(row => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                <td style="padding: 8px; border-bottom: 1px solid var(--input-border);">${row.timestamp}</td>
-                <td style="padding: 8px; border-bottom: 1px solid var(--input-border);">${row.temperature}</td>
-                <td style="padding: 8px; border-bottom: 1px solid var(--input-border);">${row.pressure}</td>
-            `;
-                tbody.appendChild(tr);
-            });
-        } catch (err) {
-            console.error("Failed to load data log:", err);
-            const tbody = document.getElementById('datalog-body');
-            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:red;">Failed to load data</td></tr>`;
-        }
+  async function loadDataLog() {
+    const tbody = document.getElementById("datalog-body");
+    tbody.innerHTML = `<tr><td colspan="4" class="muted">Loading…</td></tr>`;
+
+    try {
+      const preset = document.getElementById("preset").value;
+      const fromIso = toISO(document.getElementById("fromTs").value);
+      const toIso = toISO(document.getElementById("toTs").value);
+
+      let url = `/api/logs?limit=200`;
+      if (preset) {
+        url += `&preset=${encodeURIComponent(preset)}`;
+      } else {
+        if (fromIso) url += `&from=${encodeURIComponent(fromIso)}`;
+        if (toIso) url += `&to=${encodeURIComponent(toIso)}`;
+      }
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      // If backend returned an error object, show it instead of crashing
+      if (!Array.isArray(data)) {
+        tbody.innerHTML = `<tr><td colspan="4" class="err">${data.error || "Failed to load logs"}</td></tr>`;
+        return;
+      }
+
+      if (data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="muted">No logs yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.timestamp || "--"}</td>
+          <td>${fmt(row.temperature, "°C", 1)}</td>
+          <td>${fmt(row.pressure, "bar", 2)}</td>
+          <td>${row.status || "OK"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+    } catch (e) {
+      tbody.innerHTML = `<tr><td colspan="4" class="err">Failed to load data</td></tr>`;
+      console.error(e);
     }
+  }
 
-    // Initialize table on page load
-    loadDataLog();
-
-    // Optional: auto-refresh every 60 seconds
-    setInterval(loadDataLog, 60000);
-
-    // Listen for dark/light theme changes
-    const observer = new MutationObserver(() => {
-        const ths = document.querySelectorAll('#datalog-table th');
-        ths.forEach(th => th.style.color = getComputedStyle(document.body).getPropertyValue('--text-color'));
-    });
-    observer.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
-
+  document.getElementById("applyBtn").addEventListener("click", loadDataLog);
+  loadDataLog();
+  setInterval(loadDataLog, 60000);
 </script>
-
 {% endblock %}

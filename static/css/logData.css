@@ -5,3 +5,67 @@
     /* padding: 15px; */
     padding-top: 100px;
 }
+
+.log-controls{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin: 10px 0 18px;
+}
+
+.log-controls select,
+.log-controls input{
+  padding: 8px 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.log-controls button{
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #2e46ff;
+  color: white;
+  font-weight: 700;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  background: var(--card-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 14px;
+  padding: 10px;
+}
+
+#datalog-table{
+  width:100%;
+  border-collapse: collapse;
+}
+
+#datalog-table th, #datalog-table td{
+  padding: 10px;
+  border-bottom: 1px solid var(--input-border);
+  color: var(--text-color);
+}
+
+#datalog-table thead th{
+  position: sticky;
+  top: 0;
+  background: var(--card-bg);
+  z-index: 1;
+}
+
+.muted{
+  text-align:center;
+  color: #888;
+}
+
+.err{
+  text-align:center;
+  color: #ff4d4d;
+  font-weight: 700;
+}

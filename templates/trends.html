@@ -5,108 +5,37 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/trends.css') }}">
 
 <div class="trends-container">
-    <h2>Trends</h2>
-
-    <!-- Interval selector -->
-    <div style="text-align:center; margin-bottom: 15px;">
-        <label for="interval-select">Select Interval: </label>
-        <select id="interval-select">
-            <option value="minute" selected>Minute</option>
-            <option value="hour">Hour</option>
-        </select>
+  <div class="trends-top">
+    <div>
+      <h2 class="trends-title">Trends</h2>
+      <div class="trends-sub">Real PLC trends (Temperature + Pressure)</div>
     </div>
 
-    <!-- Charts container -->
-    <div id="charts-container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+    <div class="trends-controls">
+      <select id="rangeSelect" class="select">
+        <option value="1">Last 1 min</option>
+        <option value="5">Last 5 min</option>
+        <option value="15">Last 15 min</option>
+        <option value="30">Last 30 min</option>
+        <option value="60" selected>Last 60 min</option>
+        <option value="180">Last 3 hours</option>
+        <option value="360">Last 6 hours</option>
+        <option value="720">Last 12 hours</option>
+        <option value="1440">Last 24 hours</option>
+      </select>
 
-        <!-- Temperature Chart -->
-        <div style="flex:1; min-width:300px;">
-            <h3 style="text-align:center; color: var(--text-color);">Temperature Trends (°C)</h3>
-            <div id="tempChart" style="height:350px;"></div>
-        </div>
-
-        <!-- Pressure Chart -->
-        <div style="flex:1; min-width:300px;">
-            <h3 style="text-align:center; color: var(--text-color);">Pressure Trends (Pa)</h3>
-            <div id="pressureChart" style="height:350px;"></div>
-        </div>
-
+      <button id="pauseBtn" class="btn">Pause</button>
+      <button id="liveBtn" class="btn primary">Live</button>
     </div>
+  </div>
+
+  <div class="chart-card">
+    <div id="trendChart"></div>
+  </div>
+
+  <div class="hint">Zoom: drag. Reset: double click.</div>
 </div>
 
-<!-- ApexCharts -->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-<script>
-    async function initTrends() {
-        const intervalSelect = document.getElementById('interval-select');
-
-        // Fetch data from API
-        async function fetchData() {
-            const interval = intervalSelect.value;
-            const res = await fetch(`/api/trends?interval=${interval}&limit=500`); // load more points for deep view
-            return await res.json();
-        }
-
-        // Initialize charts with zoom & pan
-        const tempChart = new ApexCharts(document.querySelector("#tempChart"), {
-            chart: {
-                type: 'line',
-                height: 350,
-                zoom: { enabled: true, type: 'x', autoScaleYaxis: true },
-                toolbar: { autoSelected: 'zoom', show: true },
-            },
-            series: [{ name: 'Temperature', data: [] }],
-            xaxis: { categories: [] },
-            tooltip: { enabled: true, shared: true, intersect: false },
-            colors: ['#FF5733'],
-            theme: { mode: document.body.getAttribute('data-theme') }
-        });
-
-        const pressureChart = new ApexCharts(document.querySelector("#pressureChart"), {
-            chart: {
-                type: 'line',
-                height: 350,
-                zoom: { enabled: true, type: 'x', autoScaleYaxis: true },
-                toolbar: { autoSelected: 'zoom', show: true },
-            },
-            series: [{ name: 'Pressure', data: [] }],
-            xaxis: { categories: [] },
-            tooltip: { enabled: true, shared: true, intersect: false },
-            colors: ['#33A1FF'],
-            theme: { mode: document.body.getAttribute('data-theme') }
-        });
-
-        tempChart.render();
-        pressureChart.render();
-
-        // Update charts with data
-        async function updateCharts() {
-            const data = await fetchData();
-            const times = data.map(d => d.time).reverse();
-            const temps = data.map(d => parseFloat(d.temperature)).reverse();
-            const pressures = data.map(d => parseFloat(d.pressure)).reverse();
-
-            tempChart.updateOptions({ xaxis: { categories: times } });
-            tempChart.updateSeries([{ data: temps }]);
-
-            pressureChart.updateOptions({ xaxis: { categories: times } });
-            pressureChart.updateSeries([{ data: pressures }]);
-        }
-
-        intervalSelect.addEventListener('change', updateCharts);
-        updateCharts();
-
-        // Listen for dark/light theme changes
-        const observer = new MutationObserver(() => {
-            tempChart.updateOptions({ theme: { mode: document.body.getAttribute('data-theme') } });
-            pressureChart.updateOptions({ theme: { mode: document.body.getAttribute('data-theme') } });
-        });
-        observer.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
-    }
-
-    // Initialize on page load
-    initTrends();
-</script>
-
+<script src="{{ url_for('static', filename='js/trends.js') }}"></script>
 {% endblock %}

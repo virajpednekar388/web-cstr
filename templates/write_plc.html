@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Write to PLC{% endblock %}
+
+{% block content %}
+<div class="write-plc-section">
+  <div class="write-plc-header">
+    <h2>Write to PLC</h2>
+    <p>Operate CV-1 and CV-2 from SCADA (Open/Close or set %)</p>
+  </div>
+
+  <div class="write-plc-grid">
+
+    <!-- Valve 1 -->
+    <div class="write-card">
+      <div class="write-card-top">
+        <h3>CV-1 (Valve 1)</h3>
+        <span class="chip">N13:10 → 40011</span>
+      </div>
+
+      <div class="write-actions">
+        <button class="wbtn wbtn-open" onclick="sendValveCommand(1,'open')">OPEN</button>
+        <button class="wbtn wbtn-close" onclick="sendValveCommand(1,'close')">CLOSE</button>
+      </div>
+
+      <div class="write-slider">
+        <label>Position (%)</label>
+        <div class="slider-row">
+          <input id="v1Slider" type="range" min="0" max="100" value="0"
+                 oninput="updateSliderLabel(1,this.value)">
+          <span id="v1Value" class="slider-val">0%</span>
+        </div>
+        <button class="wbtn wbtn-set" onclick="sendValvePercent(1)">SET %</button>
+      </div>
+
+      <div class="write-status">
+        <span class="dot" id="v1Dot"></span>
+        <span id="v1StatusText">Idle</span>
+      </div>
+    </div>
+
+    <!-- Valve 2 -->
+    <div class="write-card">
+      <div class="write-card-top">
+        <h3>CV-2 (Valve 2)</h3>
+        <span class="chip">N13:11 → 40012</span>
+      </div>
+
+      <div class="write-actions">
+        <button class="wbtn wbtn-open" onclick="sendValveCommand(2,'open')">OPEN</button>
+        <button class="wbtn wbtn-close" onclick="sendValveCommand(2,'close')">CLOSE</button>
+      </div>
+
+      <div class="write-slider">
+        <label>Position (%)</label>
+        <div class="slider-row">
+          <input id="v2Slider" type="range" min="0" max="100" value="0"
+                 oninput="updateSliderLabel(2,this.value)">
+          <span id="v2Value" class="slider-val">0%</span>
+        </div>
+        <button class="wbtn wbtn-set" onclick="sendValvePercent(2)">SET %</button>
+      </div>
+
+      <div class="write-status">
+        <span class="dot" id="v2Dot"></span>
+        <span id="v2StatusText">Idle</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/write_plc.js') }}"></script>
+{% endblock %}

@@ -56,26 +56,6 @@
     transition: all 0.3s ease;
 }
 
-.dashboard .main-layout .cstr-layout header h1::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background: var(--nav-hover);
-    transition: all 0.3s ease;
-}
-
-.dashboard .main-layout .cstr-layout header h1:hover::after {
-    width: 100%;
-}
-
-.dashboard .main-layout .cstr-layout header h1:hover{
-    color: rgb(14, 14, 102);
-}
-
-
 .dashboard .main-layout .cstr-layout .layout {
     display: flex;
     flex-direction: row;

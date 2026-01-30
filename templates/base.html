@@ -1,56 +1,138 @@
+<!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
-    </style>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+  </style>
 </head>
 
 <body data-theme="light">
-    <h2 id="head-nav"><span style="color: orange;">Industrial.</span>SCADA</h2>
-    <nav>
-        <div id="in-logo">
-            <img src="{{ url_for('static', filename='scada-logo.png') }}" alt="PT">
-        </div>
-
-        <div class="Links-Name">
-            {% if session.get('user') %}
-            <a href="{{ url_for('logout') }}">Logout</a>
-            {% endif %}
-            <a href="{{ url_for('dashboard') }}">Dashboard</a>
-            <a href="{{ url_for('Trends') }}">Trends</a>
-            <a href="{{ url_for('DataLog') }}">Log</a>
-        </div>
-
-        <div id="status" class="unknown">Checking...</div>
-
-    </nav>
-
-    <div class="container">
-        {% block content %}{% endblock %}
+  <h2 id="head-nav"><span style="color: orange;">Industrial.</span>SCADA</h2>
+  <nav>
+    <div id="in-logo">
+      <img src="{{ url_for('static', filename='scada-logo.png') }}" alt="PT">
     </div>
 
-    <script>
-        const toggle = document.getElementById('theme-toggle');
-        const body = document.body;
+    <div class="Links-Name">
+      {% if session.get('user') %}
+      <a href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+      <a href="{{ url_for('dashboard') }}" class="nav-parent">Dashboard</a>
+      <a href="{{ url_for('Trends') }}">Trends</a>
+      <a href="{{ url_for('DataLog') }}">Log</a>
+    </div>
+    <a href="#" id="openWritePLCModal">Write to PLC</a>
 
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        body.setAttribute('data-theme', savedTheme);
-        toggle.checked = savedTheme === 'dark';
+    <div id="status" class="unknown">Checking...</div>
 
-        toggle.addEventListener('change', () => {
-            const theme = toggle.checked ? 'dark' : 'light';
-            body.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        });
-    </script>
+    <!-- Dark/Light Slider -->
+    <!-- <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+        </label> -->
+  </nav>
 
-    <script src="/static/js/status.js"></script>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', savedTheme);
+    toggle.checked = savedTheme === 'dark';
+
+    toggle.addEventListener('change', () => {
+      const theme = toggle.checked ? 'dark' : 'light';
+      body.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    });
+  </script>
+  <!-- ===================== WRITE TO PLC MODAL ===================== -->
+  <div class="modal-overlay" id="writePlcOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="writePlcTitle">
+      <div class="modal-header">
+        <div>
+          <h2 id="writePlcTitle">Write to PLC</h2>
+          <p>Operate CV-1 and CV-2 (Open/Close or set %)</p>
+        </div>
+        <button class="modal-close" id="closeWritePLCModal" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="write-plc-grid">
+
+          <!-- CV-1 -->
+          <div class="write-card">
+            <div class="write-card-top">
+              <h3>CV-1 (Valve 1)</h3>
+              <span class="chip">N13:10 → 40011</span>
+            </div>
+
+            <div class="write-actions">
+              <button class="wbtn wbtn-open" onclick="sendValveCommand(1,'open')">OPEN</button>
+              <button class="wbtn wbtn-close" onclick="sendValveCommand(1,'close')">CLOSE</button>
+            </div>
+
+            <div class="write-slider">
+              <label>Position (%)</label>
+              <div class="slider-row">
+                <input id="v1Slider" type="range" min="0" max="100" value="0" oninput="updateSliderLabel(1,this.value)">
+                <span id="v1Value" class="slider-val">0%</span>
+              </div>
+              <button class="wbtn wbtn-set" onclick="sendValvePercent(1)">SET %</button>
+            </div>
+
+            <div class="write-status">
+              <span class="dot" id="v1Dot"></span>
+              <span id="v1StatusText">Idle</span>
+            </div>
+          </div>
+
+          <!-- CV-2 -->
+          <div class="write-card">
+            <div class="write-card-top">
+              <h3>CV-2 (Valve 2)</h3>
+              <span class="chip">N13:11 → 40012</span>
+            </div>
+
+            <div class="write-actions">
+              <button class="wbtn wbtn-open" onclick="sendValveCommand(2,'open')">OPEN</button>
+              <button class="wbtn wbtn-close" onclick="sendValveCommand(2,'close')">CLOSE</button>
+            </div>
+
+            <div class="write-slider">
+              <label>Position (%)</label>
+              <div class="slider-row">
+                <input id="v2Slider" type="range" min="0" max="100" value="0" oninput="updateSliderLabel(2,this.value)">
+                <span id="v2Value" class="slider-val">0%</span>
+              </div>
+              <button class="wbtn wbtn-set" onclick="sendValvePercent(2)">SET %</button>
+            </div>
+
+            <div class="write-status">
+              <span class="dot" id="v2Dot"></span>
+              <span id="v2StatusText">Idle</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/write_plc_modal.js') }}"></script>
+
+  <script src="/static/js/status.js"></script>
 </body>
 
 </html>
